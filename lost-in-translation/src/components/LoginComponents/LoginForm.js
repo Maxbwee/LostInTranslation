@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { loginUser } from '../../api/User';
 
+// Username configuration. It applies a minimum char length of 3 to a name
+// and it requires a name to be input 
 const usernameConfig = {
     required: true,
     minLength: 3
@@ -9,14 +11,13 @@ const usernameConfig = {
 
 export default function LoginForm() {
 
-
-
     const {
         register,
         handleSubmit,
         formState: { errors }
     } = useForm()
 
+    // When the continue button is clicked it shows the user a loading text
     const [loading , setLoading ] = useState(false)
 
     const onSubmit = async ({ username }) => {
@@ -41,6 +42,8 @@ export default function LoginForm() {
            return <span>Username is too shotrt! (Min. 3 characters) </span>
         }
     })()
+    // Login form data gets passed through form input 
+    // and sent to user API for requests
     return (
         <>
             <h2>What's your name?</h2>

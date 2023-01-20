@@ -3,8 +3,10 @@ import { createHeaders } from "./Index"
 
 const apiUrl = process.env.REACT_APP_API_URL
 
+// function that cheks if there is a user in the dB
 export const checkForUser = async (username) => {
 
+    // If the network responds with 200 that means that the request was ok
     try {
         const response = await fetch(`${apiUrl}?username=${username}`)
         if (!response.ok) {
@@ -18,6 +20,8 @@ export const checkForUser = async (username) => {
     }
 }
 
+// If the entered username does not exist 
+//this function will create a user into the dB
 export const createUser = async (username) => {
     try {
         const response = await fetch(apiUrl, {
@@ -39,6 +43,10 @@ export const createUser = async (username) => {
     }
 }
 
+// loginUser function takes in the username and checks the dB
+// if there is a user with that name
+// If there isn't a user the function will trigger the creatUser function
+// that will create a new user into the dB
 export const loginUser = async (username) => {
 
     const [checkError, user] = await checkForUser(username)
