@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { loginUser } from '../../api/User';
-
+import { storageSave } from '../../utils/storage';
+import {useHistory}  from 'react-router-dom'
 // Username configuration. It applies a minimum char length of 3 to a name
 // and it requires a name to be input 
 const usernameConfig = {
@@ -11,21 +12,29 @@ const usernameConfig = {
 
 export default function LoginForm() {
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors }
-    } = useForm()
+    const {register, handleSubmit, formState: { errors }} = useForm()
 
     // When the continue button is clicked it shows the user a loading text
+    // Local states 
     const [loading , setLoading ] = useState(false)
+    const [ apiError, setApiError] = useState(null)
 
+    useEffect(() => {
+
+    }, [])  // Empty dependencies only run once
+
+    // Event handler for onSubmit button 
     const onSubmit = async ({ username }) => {
-        setLoading(true);
+        setLoading(true)
         const [ error , user ] = await loginUser(username)
-        console.log('Error: ', error )
-        console.log('User', user)
-        setLoading(false);
+        if (error !== null) {
+            setApiError(error)
+        }
+        if ( user !== null ) {
+            storageSave('translation-user', user)
+        }
+        setLoading(false)
+
 
     }
 
@@ -60,6 +69,7 @@ export default function LoginForm() {
                 <button type="submit" disabled={loading}>Continue</button>
                
                 { loading && <p> Logging in...</p>}
+                { apiError && <p>{apiError} </p>}
             </form>
         </>
     )
