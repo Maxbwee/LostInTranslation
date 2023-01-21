@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { loginUser } from '../../api/User';
 import { storageSave } from '../../utils/storage';
-import {useHistory}  from 'react-router-dom'
+import {useNavigate}  from 'react-router-dom'
+import { useUser } from '../../context/UserContext';
 // Username configuration. It applies a minimum char length of 3 to a name
 // and it requires a name to be input 
 const usernameConfig = {
@@ -11,27 +12,32 @@ const usernameConfig = {
 }
 
 export default function LoginForm() {
-
+    // hooks 
     const {register, handleSubmit, formState: { errors }} = useForm()
-
+    const { user, setUser } = useUser() 
+    const navigate = useNavigate()
     // When the continue button is clicked it shows the user a loading text
     // Local states 
     const [loading , setLoading ] = useState(false)
     const [ apiError, setApiError] = useState(null)
 
     useEffect(() => {
-
-    }, [])  // Empty dependencies only run once
+        if (user !== null ) {
+            navigate('profile')
+        }
+        console.log( 'User has changed', user)
+    }, [user, navigate ])  // Empty dependencies only run once
 
     // Event handler for onSubmit button 
     const onSubmit = async ({ username }) => {
         setLoading(true)
-        const [ error , user ] = await loginUser(username)
+        const [ error , userResponse ] = await loginUser(username)
         if (error !== null) {
             setApiError(error)
         }
-        if ( user !== null ) {
-            storageSave('translation-user', user)
+        if ( userResponse !== null ) {
+            storageSave('translation-user', userResponse)
+            setUser(userResponse)
         }
         setLoading(false)
 
