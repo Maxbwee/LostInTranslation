@@ -4,6 +4,7 @@ import { loginUser } from '../../api/User';
 import { storageSave } from '../../utils/storage';
 import {useNavigate}  from 'react-router-dom'
 import { useUser } from '../../context/UserContext';
+import { STORAGE_KEY_USER } from '../../const/storageKeys';
 // Username configuration. It applies a minimum char length of 3 to a name
 // and it requires a name to be input 
 const usernameConfig = {
@@ -21,9 +22,10 @@ export default function LoginForm() {
     const [loading , setLoading ] = useState(false)
     const [ apiError, setApiError] = useState(null)
 
+    // Navugates the user to the translation page after logging in
     useEffect(() => {
         if (user !== null ) {
-            navigate('profile')
+            navigate('translation')
         }
         console.log( 'User has changed', user)
     }, [user, navigate ])  // Empty dependencies only run once
@@ -36,7 +38,7 @@ export default function LoginForm() {
             setApiError(error)
         }
         if ( userResponse !== null ) {
-            storageSave('translation-user', userResponse)
+            storageSave(STORAGE_KEY_USER, userResponse)
             setUser(userResponse)
         }
         setLoading(false)

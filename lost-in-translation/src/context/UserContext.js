@@ -1,4 +1,6 @@
 import { createContext, useContext, useState } from "react";
+import { STORAGE_KEY_USER } from "../const/storageKeys";
+import { storageRead } from "../utils/storage";
 
 // Context object allows you to pull the value of the context
 
@@ -11,8 +13,8 @@ export const useUser = () => {
 // Context provider manages state of context
 
 const UserProvider = (props) => {
-    
-    const [user , setUser] = useState(null)
+    // magic strings and numbers 
+    const [user , setUser] = useState(storageRead(STORAGE_KEY_USER))
 
     const state = {
         user,

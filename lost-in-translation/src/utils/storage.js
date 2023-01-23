@@ -7,7 +7,7 @@ export const storageSave = ( key, value ) => {
 export const storageRead = (key ) => {
     const data = localStorage.getItem(key)
     if ( data ) {
-        JSON.parse(data)
+        return JSON.parse(data)
     }
     return null;
 }

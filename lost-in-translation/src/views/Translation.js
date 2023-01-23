@@ -1,4 +1,8 @@
-export default function Translation() {
+import withAuth from "../hoc/withAuth"
+
+
+
+const Translation = () => {
 
     
     return (
@@ -6,3 +10,4 @@ export default function Translation() {
     )
 
 } 
+export default withAuth(Translation)
