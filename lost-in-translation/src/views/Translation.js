@@ -1,8 +1,10 @@
 import { translationAdd } from "../api/Translation"
 import TranslationButton from "../components/TranslationComponents/TranslationButton"
 import TranslationForm from "../components/TranslationComponents/TranslationForm"
+import { STORAGE_KEY_USER } from "../const/storageKeys"
 import { useUser } from "../context/UserContext"
 import withAuth from "../hoc/withAuth"
+import { storageSave } from "../utils/storage"
 
 
 const SIGNS = [
@@ -36,7 +38,7 @@ const Translation = () => {
         return <TranslationButton key={sign.id} name={sign.name} image={sign.image} />
     })
 
-    const { user } = useUser()
+    const { user, setUser } = useUser()
     //const [translation, setTranslation] = useState(null)
 
     // check if theres a translation
@@ -50,10 +52,19 @@ const Translation = () => {
        }
 
         const translation = notes
-        const [error, result ] = await translationAdd(user, translation)
+        const [error, updatedUser ] = await translationAdd(user, translation)
+
+        if(error !== null) {
+            return
+        }
+
+        // Keeps UI state and server state in sync
+        storageSave(STORAGE_KEY_USER, updatedUser )
+        // Updates context state
+        setUser(updatedUser)
 
         console.log('ERROR', error);
-        console.log('RESULT', result);
+        console.log('updatedUser', updatedUser);
     }
 
     return (
