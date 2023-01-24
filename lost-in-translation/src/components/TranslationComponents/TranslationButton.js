@@ -1,12 +1,12 @@
 
-const TranslationButton = ({letter, image}) => {
+const TranslationButton = ({sign, image}) => {
     return(
         <button>
             <aside>
-                <img src={image} alt={letter} width="55"/>
+                <img src={image} alt={sign} width="55"/>
             </aside>
             <section>
-                <b> { letter } </b>
+                <b> { sign } </b>
             </section>
         </button>
     )
