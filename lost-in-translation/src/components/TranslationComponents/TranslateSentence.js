@@ -1,10 +1,28 @@
-const TranslateSentence = ({sign}) => {
+import "../../styles/Translation.css"
+
+const TranslateSentence = ({sentenceArray}) => {
+
+    console.log(sentenceArray)
+
+    if(!sentenceArray) {
+        return
+    }
+
+    // This maps through the array of characters
+    // and returns individual signs that correspond the character
+    const signList = sentenceArray.map((character, index) => 
+
+        (character !== " " && <img key={ index + "-" + character } src= { "img/" + character + ".png"}  alt="text-to-sign"/>)
+    )
 
     return (
-        <section>
-            <h4>Translation</h4>
-            <img src={sign.image} alt={ sign.name} width="55" />
-            <p></p>
+        
+        <section className="TranslationOutput">
+            <h4>Translation: </h4>
+            
+            <p className="Signs">
+                {signList}
+            </p>
         </section>
     )
 }

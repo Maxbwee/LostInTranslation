@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form"
+import "../../styles/Translation.css"
 
 const TranslationForm = ({ onTranslate }) => {
 
@@ -9,11 +10,15 @@ const TranslationForm = ({ onTranslate }) => {
     }
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
-            <fieldset>
-                <label htmlFor="translation-notes">Translation notes:</label>
-                <input type="text" {...register('translationNotes')} />
-            </fieldset>
-            <button type="submit" > Translate </button>
+            <div className="InputWithButton">
+                <input className="TranslationInput" 
+                type="text" 
+                {...register('translationNotes')} 
+                placeholder="Translate something"
+                />
+                <button className="TranslateButton" type="submit" > Translate </button>
+            </div>
+            
         </form>
     )
 }

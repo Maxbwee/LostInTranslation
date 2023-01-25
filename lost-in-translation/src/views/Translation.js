@@ -1,45 +1,25 @@
+import { useState } from "react"
 import { translationAdd } from "../api/Translation"
-import TranslationButton from "../components/TranslationComponents/TranslationButton"
+import TranslateSentence from "../components/TranslationComponents/TranslateSentence"
 import TranslationForm from "../components/TranslationComponents/TranslationForm"
 import { STORAGE_KEY_USER } from "../const/storageKeys"
 import { useUser } from "../context/UserContext"
 import withAuth from "../hoc/withAuth"
 import { storageSave } from "../utils/storage"
+import "../styles/Translation.css"
 
 
-const SIGNS = [
-    {
-        id: 1,
-        name: 'a',
-        image: 'img/a.png'
-    },
-    {
-        id: 2,
-        name: 'b',
-        image: 'img/b.png'
-    },
-    {
-        id: 3,
-        name: 'c',
-        image: 'img/c.png'
-    },
-    {
-        id: 4,
-        name: 'd',
-        image: 'img/d.png'
-    },
 
-]
 
 const Translation = () => {
 
 
-    const signs = SIGNS.map(sign => {
-        return <TranslationButton key={sign.id} name={sign.name} image={sign.image} />
-    })
+   // const signs = SIGNS.map(sign => {
+    //    return <TranslationButton key={sign.id} name={sign.name} image={sign.image} />
+    //})
 
     const { user, setUser } = useUser()
-    //const [translation, setTranslation] = useState(null)
+    const [ translation, setTranslation ] = useState(null)
 
     // check if theres a translation
     // combine translation with note
@@ -63,19 +43,26 @@ const Translation = () => {
         // Updates context state
         setUser(updatedUser)
 
+        const sentenceArray = notes.split("")
+        setTranslation(sentenceArray)
+
         console.log('ERROR', error);
         console.log('updatedUser', updatedUser);
+        
     }
 
     return (
         <>
-        <h1> Translation</h1>
-        <section id="sign-option">
-            {signs }
-        </section>
-        <section id="translation-notes">
+        <div className="TranslationForm">
+        <img className="logo-hello" src='/img/Logo-Hello.png' alt="login-logo"/>
+        <h1 className="TranslationTitle"> Translation</h1>
+        <div>
         <TranslationForm  onTranslate={handleTranslateClicked} />
-        </section>
+        </div>
+        </div>
+        <div className="TranslatedSentence">
+        <TranslateSentence sentenceArray={translation}/>
+        </div>
         </>
     )
 
