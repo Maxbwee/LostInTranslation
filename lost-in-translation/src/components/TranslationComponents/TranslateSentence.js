@@ -1,4 +1,4 @@
-const TranslateSentence = ({sign, notes = ''}) => {
+const TranslateSentence = ({sign}) => {
 
     return (
         <section>

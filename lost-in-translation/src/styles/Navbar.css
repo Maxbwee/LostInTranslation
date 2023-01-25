@@ -1,8 +1,13 @@
+@import url('https://fonts.google.com/specimen/Love+Ya+Like+A+Sister?query=Love+Ya+Like+a+sister');
+
 #nav-title{
     margin-left: 100px;
+    font-family:cursive;
+    font-size: 24px;
 }
 
 #nav-bar{
+    font-family: 'Love Ya Like A Sister';
     text-align:left;
     background-color: #facc4d;
     height: 70px;

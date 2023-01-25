@@ -5,6 +5,7 @@ import { storageSave } from '../../utils/storage';
 import {useNavigate}  from 'react-router-dom'
 import { useUser } from '../../context/UserContext';
 import { STORAGE_KEY_USER } from '../../const/storageKeys';
+import "../../styles/Login.css"
 // Username configuration. It applies a minimum char length of 3 to a name
 // and it requires a name to be input 
 const usernameConfig = {
@@ -52,7 +53,7 @@ export default function LoginForm() {
         }
 
         if (errors.username.type === 'required') {
-            return <span>Username is required</span>
+            return <span style={{margin: 20}}>Username is required</span>
         }
 
         if (errors.username.type === 'minLength') {
@@ -63,18 +64,20 @@ export default function LoginForm() {
     // and sent to user API for requests
     return (
         <>
-            <h2>What's your name?</h2>
+            
             <form onSubmit={handleSubmit(onSubmit)}>
-                <fieldset>
-                    <label htmlFor="username">Username: </label>
+                <div>
+                    <h3 id="login-label">Get started</h3>
                     <input
+                        id="login-input"
                         type="text"
-                        placeholder="what's your name?"
+                        placeholder="What's your name?"
                         {...register("username", usernameConfig)} />
                    
                 {errorMsg}
-                </fieldset>
-                <button type="submit" disabled={loading}>Continue</button>
+                
+                </div>
+                <button id="login-button" type="submit" disabled={loading}>Continue</button>
                
                 { loading && <p> Logging in...</p>}
                 { apiError && <p>{apiError} </p>}

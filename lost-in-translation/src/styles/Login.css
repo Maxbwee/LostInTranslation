@@ -1,6 +1,6 @@
 #logo{
-    width: 100px;
-    height:100px;
+    width: 120px;
+    height:120px;
     margin-left: 20em;
     margin-top: 20px;
     
@@ -13,4 +13,34 @@
 #login-title{
     text-align: center;
     color:white;
+    font-family: cursive;
+}
+
+#login-input{
+    box-sizing: border-box;
+    height: 39px;
+    width: 426px;
+    border: 3px solid grey;
+    border-radius: 20px;
+    color: #333333;
+    font-size: 18px;
+    margin-left: 400px;
+}
+
+#login-button{
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 10px 60px;
+    border-radius: 5px;
+    margin: 10 0px;
+    cursor: pointer;
+    margin-left: 550px;
+    margin-top: 20px;
+}
+
+#login-label{
+    text-align: center;
+    color: white;
+    font-family: cursive;
 }
