@@ -1,0 +1,17 @@
+#nav-title{
+    margin-left: 100px;
+}
+
+#nav-bar{
+    text-align:left;
+    background-color: #facc4d;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0.5rem 0rem;
+    color: white;
+    box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
+    font-size: 20px;
+}

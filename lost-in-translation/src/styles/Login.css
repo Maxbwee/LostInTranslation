@@ -1,0 +1,16 @@
+#logo{
+    width: 100px;
+    height:100px;
+    margin-left: 20em;
+    margin-top: 20px;
+    
+}
+#login-div{
+    background-color: #facc4d;
+}
+
+
+#login-title{
+    text-align: center;
+    color:white;
+}
