@@ -7,7 +7,7 @@ import { STORAGE_KEY_USER } from "../const/storageKeys"
 import { useUser } from "../context/UserContext"
 import withAuth from "../hoc/withAuth"
 import { storageSave } from "../utils/storage"
-
+import "../styles/Profile.css"
 
 
 const Profile = () => {
@@ -28,10 +28,15 @@ const Profile = () => {
 
     return (
         <>
-        <h1>Profile</h1>
-        <ProfileHeader username={user.username}/>
+        <div className="ProfileBg">
+        <h1 className="ProfileTitle">Profile</h1>
+        
         <ProfileActions/>
+        <ProfileHeader username={user.username}/>
+        
         <ProfileTranslationHistory translations= {user.translations} />
+        <img className="LogoProfile" src='/img/Logo-Hello.png' alt="login-logo"/>
+        </div>
         </>
     )
 

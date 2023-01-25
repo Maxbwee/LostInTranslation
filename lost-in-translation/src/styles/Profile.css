@@ -1,0 +1,42 @@
+.ProfileHeader{
+    text-align: center;
+}
+
+.LogoProfile{
+    width: 160px;
+    height:130px;
+    float: left;
+    
+
+}
+
+.TranslationList{
+text-align: center;
+}
+
+.ClearHistoryButton{
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 10px 30px;
+    border-radius: 3px;
+    cursor: pointer;
+    
+    
+}
+
+.LogoutButton{
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 10px 30px;
+    border-radius: 3px;
+    cursor: pointer;
+    float: right;
+
+}
+
+.ProfileTitle{
+    text-align: center;
+}
+

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+
 import { translationClearHistory } from "../../api/Translation"
 import { STORAGE_KEY_USER } from "../../const/storageKeys"
 import { useUser } from "../../context/UserContext"
@@ -40,11 +40,14 @@ const ProfileActions = () => {
     }
     
     return(
-        <ul>
-            <li><Link to="/translation">Translation</Link></li>
-            <li><button onClick={handleClearHistoryClick}>Clear translations</button></li>
-            <li><button onClick = {handleLogoutClick}>Logout</button></li>
-        </ul>
+        <div>
+            <div>
+                <button className="LogoutButton" onClick = {handleLogoutClick}>Logout</button>
+            </div>
+            <div>
+                <button className="ClearHistoryButton" onClick={handleClearHistoryClick}>Clear translations</button>
+            </div>
+        </div>
     )
 }
 export default ProfileActions

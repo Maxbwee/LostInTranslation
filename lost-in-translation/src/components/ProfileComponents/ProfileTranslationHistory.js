@@ -1,5 +1,5 @@
 import ProfileTranslationHistoryItem from "./ProfileTranslationHistoryItem"
-
+import "../../styles/Profile.css"
 const ProfileTranslationHistory = ({ translations }) => {
     
     const translationList = translations.map(
@@ -7,11 +7,11 @@ const ProfileTranslationHistory = ({ translations }) => {
         )
     
     return(
-        <section>
+        <section className="TranslationList">
             <h4>Your translation history </h4>
-            <ul>
+            <p>
             {translationList}
-            </ul>
+            </p>
         </section>
     )
 }
