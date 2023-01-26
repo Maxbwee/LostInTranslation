@@ -1,5 +1,7 @@
 import ProfileTranslationHistoryItem from "./ProfileTranslationHistoryItem"
 import "../../styles/Profile.css"
+
+// Component that maps out the users translated inputs
 const ProfileTranslationHistory = ({ translations }) => {
     
     const translationList = translations.map(

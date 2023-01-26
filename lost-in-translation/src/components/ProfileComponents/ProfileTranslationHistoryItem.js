@@ -1,4 +1,5 @@
 
+// Translation history component
 const ProfileTranslationHistoryItem = ({translation}) => {
     return (
     <li>{ translation }</li>

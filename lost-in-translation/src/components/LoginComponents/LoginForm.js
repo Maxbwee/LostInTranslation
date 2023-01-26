@@ -47,6 +47,7 @@ export default function LoginForm() {
 
     }
 
+    // Error message for if a user inputs a name that is too short or try's to login without a username
     const errorMsg = (() => {
         if(!errors.username) {
             return null

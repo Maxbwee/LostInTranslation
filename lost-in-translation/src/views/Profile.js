@@ -10,6 +10,7 @@ import { storageSave } from "../utils/storage"
 import "../styles/Profile.css"
 
 
+// Profile page. The user can redirect here through the navbar
 const Profile = () => {
 
     const { user, setUser} = useUser()
@@ -26,16 +27,18 @@ const Profile = () => {
         findUser()
     }, [ setUser, user.id ])
 
+    // Renders all the actions that are used on the profile page.
     return (
         <>
         <div className="ProfileBg">
-        <h1 className="ProfileTitle">Profile</h1>
+        <h1 className="ProfileTitle">{user.username}'s profile page </h1>
         
-        <ProfileActions/>
         <ProfileHeader username={user.username}/>
-        
         <ProfileTranslationHistory translations= {user.translations} />
+        <ProfileActions/>
+        
         <img className="LogoProfile" src='/img/Logo-Hello.png' alt="login-logo"/>
+        <p className="RobotText">To clear your translations click the button!</p>
         </div>
         </>
     )

@@ -67,6 +67,7 @@ export const loginUser = async (username) => {
 
 }
 
+// Checks for the user based on the current user id
 export const userById = async(userId) => {
     try {
         const response = await fetch(`${apiUrl}/${userId}`)

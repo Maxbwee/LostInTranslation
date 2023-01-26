@@ -14,16 +14,13 @@ import "../styles/Translation.css"
 const Translation = () => {
 
 
-   // const signs = SIGNS.map(sign => {
-    //    return <TranslationButton key={sign.id} name={sign.name} image={sign.image} />
-    //})
-
     const { user, setUser } = useUser()
     const [ translation, setTranslation ] = useState(null)
 
     // check if theres a translation
     // combine translation with note
     // send HTTP request
+
     const handleTranslateClicked = async (notes) => {
         
         if(!notes){
@@ -43,6 +40,7 @@ const Translation = () => {
         // Updates context state
         setUser(updatedUser)
 
+        // Sends data forwards to be used in the Translation component
         const sentenceArray = notes.split("")
         setTranslation(sentenceArray)
 
@@ -51,6 +49,8 @@ const Translation = () => {
         
     }
 
+
+    // Renders all components used in the Translation page.
     return (
         <>
         <div className="TranslationForm">

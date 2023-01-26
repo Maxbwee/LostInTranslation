@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom"
 import { useUser } from "../../context/UserContext"
 import "../../styles/Navbar.css"
 
+// Basic navigation for the application. 
 const Navbar = () => {
 
 
@@ -9,11 +10,8 @@ const Navbar = () => {
 
     return(
         <nav id="nav-bar">
-            
                 <p id="nav-title">Lost in Translation</p>
            
-
-
             { user !== null &&
                 <ul>
                     <li>

@@ -44,7 +44,7 @@ const ProfileActions = () => {
             <div>
                 <button className="LogoutButton" onClick = {handleLogoutClick}>Logout</button>
             </div>
-            <div>
+            <div className="ClearHistoryDiv">
                 <button className="ClearHistoryButton" onClick={handleClearHistoryClick}>Clear translations</button>
             </div>
         </div>
